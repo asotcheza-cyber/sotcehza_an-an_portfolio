@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>An-An Girl Sotcheza – Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ============ THEME: change colors & fonts here ============ */
+:root{
+  --bg:#0E0A22;
+  --bg2:#150F33;
+  --card:#1B1442;
+  --ink:#F4F1FF;
+  --muted:#A9A3CF;
+  --line:rgba(255,255,255,.1);
+  --c1:#7C5CFF;   /* violet */
+  --c2:#FF6B9D;   /* pink */
+  --c3:#2DE2C8;   /* aqua */
+  --grad:linear-gradient(90deg,var(--c1),var(--c2));
+  --display:'Bricolage Grotesque', system-ui, sans-serif;
+  --sans:'DM Sans', system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--c3);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1120px,100% - 48px);margin-inline:auto;position:relative;z-index:1}
+
+/* ============ AURORA BACKGROUND ============ */
+.aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.aurora span{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45}
+.aurora span:nth-child(1){width:46vw;height:46vw;background:var(--c1);top:-12vw;left:-10vw;animation:float1 18s ease-in-out infinite alternate}
+.aurora span:nth-child(2){width:38vw;height:38vw;background:var(--c2);top:20vh;right:-14vw;opacity:.32;animation:float2 22s ease-in-out infinite alternate}
+.aurora span:nth-child(3){width:34vw;height:34vw;background:var(--c3);bottom:-14vw;left:25vw;opacity:.22;animation:float1 26s ease-in-out infinite alternate-reverse}
+@keyframes float1{to{transform:translate(8vw,10vh) scale(1.15)}}
+@keyframes float2{to{transform:translate(-10vw,-8vh) scale(.9)}}
+
+/* ============ NAV ============ */
+header{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);background:rgba(14,10,34,.6);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;justify-content:space-between;align-items:center;padding:16px 0}
+.logo{font-family:var(--display);font-weight:800;font-size:1.3rem;text-decoration:none;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav{display:flex;gap:26px;font-size:.95rem;font-weight:500}
+nav a{text-decoration:none;color:var(--muted);position:relative;transition:color .2s}
+nav a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--grad);transition:width .3s}
+nav a:hover{color:var(--ink)}
+nav a:hover::after{width:100%}
+
+/* ============ HERO ============ */
+.hero{padding:clamp(72px,12vw,150px) 0 clamp(64px,9vw,110px)}
+.status{display:inline-flex;align-items:center;gap:10px;padding:8px 16px;border:1px solid var(--line);border-radius:999px;font-size:.9rem;color:var(--muted);background:rgba(255,255,255,.04);animation:rise .8s both}
+.status i{width:9px;height:9px;border-radius:50%;background:var(--c3);box-shadow:0 0 0 0 var(--c3);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(45,226,200,0)}100%{box-shadow:0 0 0 0 rgba(45,226,200,0)}}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(3rem,9.5vw,7.6rem);line-height:.98;letter-spacing:-.035em;margin-top:28px;max-width:13ch}
+.hero h1 .l{display:block;overflow:hidden}
+.hero h1 .l b{display:block;font-weight:inherit;animation:slide 1s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .l:nth-child(2) b{animation-delay:.12s}
+.hero h1 .l:nth-child(3) b{animation-delay:.24s}
+.grad{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3),var(--c1));background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shift 6s linear infinite}
+@keyframes shift{to{background-position:300% 0}}
+@keyframes slide{from{transform:translateY(110%)}to{transform:none}}
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero p{margin-top:30px;max-width:48ch;color:var(--muted);font-size:1.2rem;animation:rise .9s .5s both}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px;animation:rise .9s .65s both}
+.btn{position:relative;overflow:hidden;padding:15px 30px;border-radius:999px;font-weight:600;font-size:.97rem;text-decoration:none;transition:transform .25s}
+.btn:hover{transform:translateY(-3px)}
+.btn.primary{background:var(--grad);color:#fff;box-shadow:0 14px 34px -10px rgba(124,92,255,.7)}
+.btn.primary::after{content:"";position:absolute;top:0;left:-80%;width:50%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.4),transparent);transform:skewX(-20deg);animation:shine 3.5s 1.5s infinite}
+@keyframes shine{40%,100%{left:140%}}
+.btn.ghost{border:1px solid var(--line);background:rgba(255,255,255,.04)}
+.btn.ghost:hover{border-color:var(--c3);color:var(--c3)}
+
+/* ============ SKILLS MARQUEE ============ */
+.marquee{border-block:1px solid var(--line);background:rgba(255,255,255,.03);overflow:hidden;position:relative;z-index:1}
+.track{display:flex;width:max-content;gap:48px;padding:20px 0;animation:scroll 28s linear infinite;font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--muted)}
+.track span::after{content:"✦";margin-left:48px;color:var(--c2)}
+.marquee:hover .track{animation-play-state:paused}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ============ SECTIONS ============ */
+section{padding:clamp(64px,9vw,120px) 0}
+.head{margin-bottom:56px;max-width:640px}
+.head h2{font-family:var(--display);font-weight:800;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;letter-spacing:-.02em}
+.head p{margin-top:14px;color:var(--muted)}
+
+/* ============ PROJECT CARDS ============ */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.card{position:relative;background:var(--card);border-radius:24px;padding:14px 14px 30px;border:1px solid var(--line);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.card::before{content:"";position:absolute;inset:-1px;border-radius:25px;padding:1px;background:var(--grad);opacity:0;transition:opacity .4s;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.card:hover{transform:translateY(-10px);box-shadow:0 40px 70px -30px rgba(124,92,255,.55)}
+.card:hover::before{opacity:1}
+.preview{display:block;border-radius:14px;overflow:hidden;position:relative;text-decoration:none}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(0,0,0,.35)}
+.bar i{width:9px;height:9px;border-radius:50%;background:#fff;opacity:.35}
+.bar i:nth-child(1){background:var(--c2);opacity:1}.bar i:nth-child(2){background:#FFC857;opacity:1}.bar i:nth-child(3){background:var(--c3);opacity:1}
+.bar span{margin-left:10px;font-size:.75rem;color:var(--muted)}
+.screen{aspect-ratio:16/10;position:relative;overflow:hidden}
+.screen img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.card:hover .screen img{transform:scale(1.06)}
+.screen.s1{background:linear-gradient(135deg,#7C5CFF,#FF6B9D)}
+.screen.s2{background:linear-gradient(135deg,#2DE2C8,#4C7DFF)}
+.screen.s3{background:linear-gradient(135deg,#FF6B9D,#FFC857)}
+.screen.s5{background:linear-gradient(135deg,#FFC857,#FF6B9D 50%,#7C5CFF)}
+.screen.s4{background:linear-gradient(135deg,#4C7DFF,#7C5CFF 55%,#2DE2C8)}
+.screen::before{content:"";position:absolute;left:9%;top:16%;width:44%;height:12px;border-radius:8px;background:rgba(255,255,255,.9)}
+.screen::after{content:"";position:absolute;left:9%;top:32%;width:82%;height:46%;border-radius:12px;background:rgba(255,255,255,.22);backdrop-filter:blur(4px);transition:transform .5s}
+.card:hover .screen::after{transform:translateY(-6px) scale(1.03)}
+.screen.has-media::before,.screen.has-media::after{display:none}
+.screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;background:#fff}
+.screen img{position:absolute;inset:0}
+.badge{position:absolute;right:12px;top:12px;z-index:2;font-size:.74rem;font-weight:600;padding:4px 12px;border-radius:999px;background:rgba(14,10,34,.7);backdrop-filter:blur(6px)}
+.body{padding:26px 14px 0}
+.card h3{font-family:var(--display);font-weight:700;font-size:1.65rem;line-height:1.2;margin-bottom:10px}
+.card p{color:var(--muted);margin-bottom:18px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-bottom:22px}
+.tags li{font-size:.8rem;padding:4px 12px;border-radius:999px;border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,.04)}
+.link{font-weight:600;text-decoration:none;color:var(--c3);display:inline-flex;gap:8px;align-items:center}
+.link::after{content:"→";transition:transform .25s}
+.link:hover::after{transform:translateX(6px)}
+
+.links{display:flex;flex-wrap:wrap;gap:8px 22px}
+.grid.three{grid-template-columns:repeat(3,1fr);gap:24px}
+.grid.three .card h3{font-size:1.45rem}
+@media (max-width:1000px){.grid.three{grid-template-columns:repeat(2,1fr)}}
+
+/* ============ ABOUT ============ */
+.about{display:grid;grid-template-columns:1fr 1.4fr;gap:48px;align-items:center}
+.about .orb{aspect-ratio:1;max-width:340px;border-radius:50%;background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c3),var(--c1));filter:blur(.5px);animation:spin 14s linear infinite;position:relative;display:grid;place-items:center}
+.about .orb::after{content:"Your photo";position:absolute;inset:10px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;color:var(--muted);font-size:.9rem;animation:spin 14s linear infinite reverse}
+.about .orb img{position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px);border-radius:50%;object-fit:cover;z-index:1;animation:spin 14s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.about p{color:var(--muted);max-width:52ch}
+.about p+p{margin-top:16px}
+.stats{display:flex;gap:40px;margin-top:32px}
+.stats b{display:block;font-family:var(--display);font-size:2.4rem;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stats span{font-size:.88rem;color:var(--muted)}
+
+/* ============ CONTACT ============ */
+.contact{text-align:center;padding:clamp(48px,7vw,96px) 24px;border-radius:32px;border:1px solid var(--line);background:linear-gradient(135deg,rgba(124,92,255,.22),rgba(255,107,157,.14))}
+.contact h2{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,7vw,5.2rem);line-height:1;letter-spacing:-.03em;margin-bottom:18px}
+.contact p{color:var(--muted);margin-bottom:32px}
+.socials{display:flex;justify-content:center;gap:26px;margin-top:30px;list-style:none}
+.socials a{color:var(--muted);text-decoration:none;transition:color .2s}
+.socials a:hover{color:var(--c3)}
+footer{padding:36px 0;color:var(--muted);font-size:.88rem;text-align:center;position:relative;z-index:1}
+
+/* ============ SCROLL REVEAL (supported browsers only) ============ */
+@supports (animation-timeline:view()){
+  .reveal{animation:fadeup linear both;animation-timeline:view();animation-range:entry 0% entry 35%}
+  @keyframes fadeup{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:none}}
+}
+
+/* ============ MOBILE & ACCESSIBILITY ============ */
+@media (max-width:820px){
+  .grid,.grid.three,.about{grid-template-columns:1fr}
+  .about .orb{max-width:220px}
+  nav{gap:16px;font-size:.88rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+
+<div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">An-An Girl Sotcheza</a>
+    <nav aria-label="Main">
+      <a href="#websites">Web apps</a>
+      <a href="#figma">Figma</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO: edit headline & intro ============ -->
+  <div class="wrap hero">
+    <div class="status"><i></i>Available for new projects</div>
+    <h1>
+      <span class="l"><b>I design</b></span>
+      <span class="l"><b>&amp; build <span class="grad">digital</span></b></span>
+      <span class="l"><b>experiences.</b></span>
+    </h1>
+    <p>I’m a designer and developer who turns ideas into bold, easy-to-use websites and interfaces. Take a look at what I’ve made.</p>
+    <div class="btns">
+      <a class="btn primary" href="#websites">View my work</a>
+      <a class="btn ghost" href="#contact">Get in touch</a>
+    </div>
+  </div>
+
+  <!-- ============ SKILLS STRIP: edit words (keep the list duplicated for a seamless loop) ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Web apps</span><span>Figma</span><span>HTML &amp; CSS</span><span>Branding</span><span>Prototyping</span><span>Responsive layouts</span>
+      <span>Web apps</span><span>Figma</span><span>HTML &amp; CSS</span><span>Branding</span><span>Prototyping</span><span>Responsive layouts</span>
+    </div>
+  </div>
+
+  <!-- ============ WEBSITES ============ -->
+  <section id="websites">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Web apps</h2>
+        <p>Live projects I’ve designed and built. Click any card to open it.</p>
+      </div>
+      <div class="grid three">
+
+        <!-- WEB APP 1: copy a whole <article> block to add more -->
+        <article class="card reveal">
+          <a class="preview" href="https://evaluate-cec.vercel.app/" target="_blank" rel="noopener" aria-label="Open Evaluate CEC">
+            <div class="bar"><i></i><i></i><i></i><span>evaluate-cec.vercel.app</span></div>
+            <div class="screen s1 has-media"><img src="1.jpg" alt="" loading="lazy"></div>
+          </a>
+          <div class="body">
+            <h3>Evaluate CEC</h3>
+            <p>A short description of this web app: what it does, who it’s for, and your role.</p>
+            <ul class="tags"><li>Web app</li><li>Vercel</li></ul>
+            <div class="links"><a class="link" href="https://evaluate-cec.vercel.app/" target="_blank" rel="noopener">Open web app</a></div>
+          </div>
+        </article>
+
+        <!-- WEB APP 2 (has two links: GitHub Pages + Render) -->
+        <article class="card reveal">
+          <a class="preview" href="https://aikelger-alt.github.io/lost/templates/" target="_blank" rel="noopener" aria-label="Open Lost">
+            <div class="bar"><i></i><i></i><i></i><span>aikelger-alt.github.io</span></div>
+            <div class="screen s2 has-media"><img src="1.jpg" alt="" loading="lazy"></div>
+          </a>
+          <div class="body">
+            <h3>Lost</h3>
+            <p>A short description of this web app: what it does, who it’s for, and your role.</p>
+            <ul class="tags"><li>Web app</li><li>GitHub Pages</li><li>Render</li></ul>
+            <div class="links"><a class="link" href="https://aikelger-alt.github.io/lost/templates/" target="_blank" rel="noopener">GitHub Pages</a><a class="link" href="https://e-ous6.onrender.com" target="_blank" rel="noopener">Live on Render</a></div>
+          </div>
+        </article>
+
+        <!-- WEB APP 3 -->
+        <article class="card reveal">
+          <a class="preview" href="https://emberfall-rho.vercel.app/" target="_blank" rel="noopener" aria-label="Open Emberfall">
+            <div class="bar"><i></i><i></i><i></i><span>emberfall-rho.vercel.app</span></div>
+            <div class="screen s5 has-media"><img src="1.jpg" alt="" loading="lazy"></div>
+          </a>
+          <div class="body">
+            <h3>Emberfall</h3>
+            <p>A short description of this web app: what it does, who it’s for, and your role.</p>
+            <ul class="tags"><li>Web app</li><li>Vercel</li></ul>
+            <div class="links"><a class="link" href="https://emberfall-rho.vercel.app/" target="_blank" rel="noopener">Open web app</a></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FIGMA ============ -->
+  <section id="figma">
+    <div class="wrap">
+      <div class="head reveal">
+        <h2>Figma designs</h2>
+        <p>Interface and product designs, with prototypes you can click through.</p>
+      </div>
+      <div class="grid">
+
+        <!-- FIGMA PROJECT 1: copy this whole <article> block to add more -->
+        <article class="card reveal">
+          <a class="preview" href="https://www.figma.com/proto/Q6YQNpObbTEwFibR3Qo9Eg/DESKTOP?node-id=1-184&amp;starting-point-node-id=1%3A184&amp;t=7dQ7unzMWM1bO3Mt-1" target="_blank" rel="noopener" aria-label="Open Desktop Design">
+            <span class="badge">Figma</span>
+            <div class="screen s3 has-media"><img src="1.jpg" alt="" loading="lazy"></div>
+          </a>
+          <div class="body">
+            <h3>Desktop Design</h3>
+            <p>A short description of the problem you designed for and the approach you took.</p>
+            <ul class="tags"><li>UI design</li><li>Desktop</li><li>Prototype</li></ul>
+            <a class="link" href="https://www.figma.com/proto/Q6YQNpObbTEwFibR3Qo9Eg/DESKTOP?node-id=1-184&amp;starting-point-node-id=1%3A184&amp;t=7dQ7unzMWM1bO3Mt-1" target="_blank" rel="noopener">View prototype</a>
+          </div>
+        </article>
+
+        <!-- FIGMA PROJECT 2 -->
+        <article class="card reveal">
+          <a class="preview" href="https://www.figma.com/proto/4WNVDkWbvgAUU1zWBVmQOk/Medical-Landing-Page--Community-?node-id=12-852&amp;p=f&amp;t=984m6XiCRifJmrvL-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank" rel="noopener" aria-label="Open Medical Landing Page">
+            <span class="badge">Figma</span>
+            <div class="screen s4 has-media"><img src="1.jpg" alt="" loading="lazy"></div>
+          </a>
+          <div class="body">
+            <h3>Medical Landing Page</h3>
+            <p>A short description of the problem you designed for and the approach you took.</p>
+            <ul class="tags"><li>Landing page</li><li>Medical</li><li>Prototype</li></ul>
+            <a class="link" href="https://www.figma.com/proto/4WNVDkWbvgAUU1zWBVmQOk/Medical-Landing-Page--Community-?node-id=12-852&amp;p=f&amp;t=984m6XiCRifJmrvL-1&amp;scaling=min-zoom&amp;content-scaling=fixed&amp;page-id=0%3A1" target="_blank" rel="noopener">View prototype</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about">
+    <div class="wrap about reveal">
+      <div class="orb"><img src="2.jpg" alt="Photo of me"></div>
+      <div>
+        <div class="head" style="margin-bottom:24px"><h2>About me</h2></div>
+        <p>Write two or three sentences about who you are, what you do, and what kind of projects you enjoy working on.</p>
+        <p>Add what you’re currently learning or what you’re open to, such as freelance work or a full-time role.</p>
+        <div class="stats">
+          <div><b>4+</b><span>Projects</span></div>
+          <div><b>2</b><span>Years learning</span></div>
+          <div><b>100%</b><span>Passion</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section id="contact" style="padding-top:0">
+    <div class="wrap">
+      <div class="contact reveal">
+        <h2>Let’s make something <span class="grad">great.</span></h2>
+        <p>Have a project in mind? Send me a message and I’ll reply soon.</p>
+        <a class="btn primary" href="mailto:you@example.com">you@example.com</a>
+        <ul class="socials">
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.figma.com/" target="_blank" rel="noopener">Figma</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 An-An Girl Sotcheza</footer>
+
+</body>
+</html>
